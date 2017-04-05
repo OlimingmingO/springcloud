@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" > </meta>
+    <title>Controllerstudy web</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.pin.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+    <script src="../static/js/bootstrap.min.js"></script>
+    <script src="../static/js/jquery.pin.js"></script>
+    <link rel="stylesheet" href="../static/css/bootstrap.min.css"/>
+</head>
+<body>
+    <div id="main" class="container">
+        <div class="row">
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Controller返回系列</div>
+                    <div class="panel-body">
+                        <li><a href="/ReturnHtml">返回页面</a></li>
+                        <li><a href="/ReturnString">返回字符串</a></li>
+                        <li><a href="/ReturnModelAndView">返回ModelAndView</a></li>
+                        <li><a href="javascript:ReturnJson()">返回Json对象</a></li>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading">Controller接参系列</div>
+                    <div class="panel-body">
+                        <li><a href="javascript:GetInput()">input输入</a></li>
+                        <li><a href="/GetInputByPosition/1/2">占位输入</a></li>
+                        <li>form提交对象</li>
+                            <form id="formpost" method="post" action="/Registor">
+                                <div class="form-group">
+                                    <input class="form-control" name="perName" type="text" placeholder="请输入姓名"> </input>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="perAge" type="text" placeholder="请输入年龄"> </input>
+                                </div>
+                                <div class="form-group">
+                                    <input class="form-control" name="remarks" type="text" placeholder="请输入备注"> </input>
+                                </div>
+                                <input type="submit" value="提交"> </input>
+                            </form>
+                        <li><a href="javascript:PostFormJson()">ajax通过Json格式提交对象</a></li>
+                        <li>文件上传</li>
+                        <form action="/upload" enctype="multipart/form-data" method="post">
+                            <p>文件：<input type="file" name="file"> </input></p>
+                            <input type="submit" value="上传"> </input>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 col-md-6">
+                <div class="panel panel-default">
+                    <div class="panel-heading">控制台</div>
+                    <div class="panel-body">
+                        <div id = "Canvas" class="Canvas"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script type="text/javascript">
+    $(function(){
+
+        $(".panel").pin();
+    })
+    function ReturnJson() {
+        $.ajax({
+            type: "post",
+            url:"/ReturnJson",
+            data : {},
+            success:function (data) {
+                $("#Canvas").html(JSON.stringify(data));
+            }
+        })
+    }
+    function GetInput() {
+        $.ajax({
+            type:"post",
+            url:"/GetInput",
+            data:{"name":"wangwu", "age":20},
+            success:function (data) {
+                $("#Canvas").html(JSON.stringify(data));
+            }
+        })
+    }
+    function PostFormJson() {
+        $.ajax({
+            type:"post",
+            url:"/Registor",
+            data:{"perName":"赵六", "perAge":22, "remarks":"我是赵六"},
+            success:function (data) {
+                $("#Canvas").html(JSON.stringify(data));
+            }
+        })
+    }
+</script>
+</html>

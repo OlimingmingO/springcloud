@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="UTF-8" > </meta>
+    <title>springboot web</title>
+    <script src="http://cdn.static.runoob.com/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery.pin.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css"/>
+</head>
+<body>
+<div id="main" class="container">
+    <div class="row">
+        <div class="col-lg-6 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">SpringBoot课程案例</div>
+                <div class="panel-body">
+                    <li class="list-group-item"><a href="controllerstudy">1、Controller系列</a></li>
+                    <li class="list-group-item"><a href="providerstudy">2、微服务系列</a></li>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6">
+            <div class="panel panel-default">
+                <div class="panel-heading">控制台</div>
+                <div class="panel-body">
+                    <div id = "Canvas" class="Canvas"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <h3>welcom you <span th:text="${name}"></span></h3>
+</div>
+</body>
+<script type="text/javascript">
+    $(function(){
+        $(".panel").pin();
+    })
+</script>
+</html>
