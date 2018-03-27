@@ -8,3 +8,4 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface UserReponsitory extends CrudRepository<User, Integer> {
 }
+ 
